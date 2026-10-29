@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+
+# Xcode — projekt generowany przez XcodeGen z project.yml
+*.xcodeproj/
+*.xcworkspace/
+xcuserdata/
+DerivedData/
+build/
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+
+# Claude Code — ustawienia lokalne
+.claude/settings.local.json

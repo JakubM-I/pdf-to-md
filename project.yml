@@ -1,0 +1,51 @@
+name: PDFToMarkdown
+options:
+  bundleIdPrefix: com.jakubmusialowski
+  deploymentTarget:
+    macOS: "26.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+
+packages:
+  PDFToMarkdownCore:
+    path: Packages/PDFToMarkdownCore
+
+targets:
+  PDFToMarkdown:
+    type: application
+    platform: macOS
+    sources:
+      - App
+    dependencies:
+      - package: PDFToMarkdownCore
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleDisplayName: PDF to Markdown
+        LSApplicationCategoryType: public.app-category.productivity
+    entitlements:
+      path: App/PDFToMarkdown.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+        com.apple.security.files.user-selected.read-write: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.jakubmusialowski.PDFToMarkdown
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_IDENTITY: "-"
+        ENABLE_HARDENED_RUNTIME: YES
+
+schemes:
+  PDFToMarkdown:
+    build:
+      targets:
+        PDFToMarkdown: all
+    run:
+      config: Debug
+    test:
+      config: Debug
